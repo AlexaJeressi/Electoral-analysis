@@ -3,11 +3,11 @@ library(readr)
 library(sf)
 library(gtools)
 
-dir <- "/Users/alexa/Library/CloudStorage/OneDrive-NextGateResearch/alexa/2022/10_Plataforma/Datos/Estado de Mexico/votos/CSV/"
+dir <- "~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/votos/CSV/"
 
 #secciones_1 <- st_read(dsn = "C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Distritacion_secciones/15_MEXICO", layer= "Seccion")
-municipio <- st_read(dsn = "/Users/alexa/Library/CloudStorage/OneDrive-NextGateResearch/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MUNICIPIOS", layer = "MUNICIPIO")
-secciones <- st_read(dsn = "/Users/alexa/Library/CloudStorage/OneDrive-NextGateResearch/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MEXICO", layer = "SECCION")
+municipio <- st_read(dsn = "~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MUNICIPIOS", layer = "MUNICIPIO")
+secciones <- st_read(dsn = "~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MEXICO", layer = "SECCION")
 
 secciones_df = as.data.frame(secciones)%>%
   janitor::clean_names()%>%
@@ -84,8 +84,6 @@ glimpse(gobernador_2011)
 gobernador_general = smartbind(gobernador_2017,gobernador_2011)%>%
    mutate_if(is.numeric , replace_na, replace = 0) # Hay partidos que no estaban en años anteriores. NA es cero 
    
-#write.csv(gobernador_general, "/Users/alexa/Library/CloudStorage/OneDrive-NextGateResearch/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Bases/gobernador_general.csv", row.names = FALSE)
-
 
 
 
