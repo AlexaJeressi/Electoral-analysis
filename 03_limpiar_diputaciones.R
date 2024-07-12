@@ -2,11 +2,11 @@ library(tidyverse)
 library(readr)
 library(sf)
 
-dir <- "C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/votos/CSV/"
+dir <- "~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/votos/CSV/"
 
-municipio <- st_read(dsn = "C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MUNICIPIOS", layer = "MUNICIPIO")
+municipio <- st_read(dsn = "~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MUNICIPIOS", layer = "MUNICIPIO")
 
-secciones <- st_read(dsn = "C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MEXICO", layer = "SECCION")
+secciones <- st_read(dsn = "~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MEXICO", layer = "SECCION")
 
 secciones_df = as.data.frame(secciones)%>%
   janitor::clean_names()%>%
