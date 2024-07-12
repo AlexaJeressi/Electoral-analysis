@@ -4,8 +4,8 @@ library(sf)
 library("readxl")
 library(gtools)
 
-dir <- "/Users/alexa/Library/CloudStorage/OneDrive-NextGateResearch/alexa/2022/10_Plataforma/Datos/Estado de Mexico/participacion/"
-secciones <- st_read(dsn = "/Users/alexa/Library/CloudStorage/OneDrive-NextGateResearch/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MEXICO", layer = "SECCION")
+dir <- "~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/participacion/"
+secciones <- st_read(dsn = "~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MEXICO", layer = "SECCION")
 
 secciones_df = as.data.frame(secciones)%>%
   janitor::clean_names()%>%
@@ -77,18 +77,6 @@ participacion_2012 <- read_excel(paste0(dir,"p_2012.xlsx"))%>%
   left_join(secciones_df, by=c("id_seccion" = "id_seccion_R"))%>%
   as.data.frame()
 
-# participacion_2009 <- read.csv(paste0(dir,"participacion_2009_edomex.csv"))%>%
-#   janitor::clean_names()%>%
-#   filter(!row_number() %in% c(1))%>%
-#   select(!c("nombre_etq","tit_crq","participacion","abstencion","no_esp_1"))%>%
-#   mutate_at(vars(lista_nominal:no_esp),function(x)as.numeric(gsub(",", ".", gsub("\\.", "",x))))%>%
-#   mutate(geounidad = as.numeric(geounidad),
-#          seccion = as.numeric(str_extract(nombre,"[:digit:]+")),
-#          ano = "2009",
-#          tipo = "participacion")%>%
-#   rename(id_seccion = seccion)%>%
-#   left_join(secciones_df, by=c("id_seccion" = "id_seccion_R"))%>%
-#   as.data.frame()  
 
 
 participacion_general = smartbind(participacion_2021,participacion_2018,
@@ -132,4 +120,4 @@ names(edomex)
 
 # Participacion por demograficos última información 2021  --------------------------------------
 
-write.csv(edomex,"C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Tab_dos/participacion.csv", row.names = FALSE)
+write.csv(edomex,"~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Tab_dos/participacion.csv", row.names = FALSE)
