@@ -9,18 +9,18 @@ library(scales)
 library(highcharter)
 
 ### Datos espaciales
-shp_ayuntamientos <- st_read(dsn = "C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MUNICIPIOS", layer = "MUNICIPIO")%>%
+shp_ayuntamientos <- st_read(dsn = "~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MUNICIPIOS", layer = "MUNICIPIO")%>%
   rename(id_municipio_R = MUNICIPIO)
 shp_ayuntamientos <- st_transform(shp_ayuntamientos, "+init=epsg:4326") ## Para que corra el leaflet
 
 
-shp_secciones <- st_read(dsn = "C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15_secciones", layer = "secciones_nuevo2")
+shp_secciones <- st_read(dsn = "~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15_secciones", layer = "secciones_nuevo2")
 shp_secciones <- st_transform(shp_secciones, "+init=epsg:4326") ## Para que corra el leaflet
 secciones_data <- as.data.frame(shp_secciones)%>%
   select(MUNICIPIO,SECCION,DISTRITO_L)
 
 
-shp_local <- st_read(dsn= "C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MEXICO", layer = "DISTRITO_LOCAL")%>%
+shp_local <- st_read(dsn= "~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MEXICO", layer = "DISTRITO_LOCAL")%>%
   left_join(secciones_data, by = "DISTRITO_L")%>%
   rename(id_municipio_R = MUNICIPIO,
          id_seccion = SECCION,
@@ -33,9 +33,9 @@ shp_local<- st_transform(shp_local, "+init=epsg:4326") ## Para que corra el leaf
 
 
 ### Bases de datos 
-ayuntamientos <- read_csv("C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Bases/ayuntamientos_general.csv")
-diputaciones <- read_csv("C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Bases/diputaciones_general.csv")
-gobernador <- read_csv("C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Bases/gobernador_general.csv")
+ayuntamientos <- read_csv("~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Bases/ayuntamientos_general.csv")
+diputaciones <- read_csv("~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Bases/diputaciones_general.csv")
+gobernador <- read_csv("~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Bases/gobernador_general.csv")
 
 
 ## Acomodar bases
@@ -183,7 +183,7 @@ prueba2 %>%
 ### GRAFICA  --------------------------
 library(highcharter)
 library(tidyverse)
-edomex <- read_csv("C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Tab_dos/agrupados_15.csv")
+edomex <- read_csv("~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Tab_dos/agrupados_15.csv")
 edomex = edomex%>%
   rename(id_seccion = seccion)%>%
   mutate(sex_name = ifelse(sexo == 0,"Hombres","Mujeres"))
