@@ -1,6 +1,5 @@
 library(tidyverse)
 
-dir <- '/Users/alexa/Library/CloudStorage/OneDrive-NextGateResearch/'
 
 ## Bases de datos votos 
 ayuntamientos <- read_csv(paste0(dir,"alexa/2022/10_Plataforma/Datos/Estado de Mexico/Bases/ayuntamientos_general.csv"))
@@ -71,40 +70,6 @@ gobernador = gobernador%>%
          #p_mc = mc/total,
          p_morena = morena/total
          )
-
-
-# Paso 2. Crear los tres indicadores ------------------------------------------------
-#------------------------------------ AYUNTAMIENTOS ---------------------------------
-# ayuntamientos2_fake = ayuntamientos_fake%>%
-#   select(id_municipio_R,p_pan,p_pri,p_prd,p_pt,p_pvem,p_mc,p_nva,p_morena,p_pes)%>%
-#   gather("partido","porcentaje",-c(id_municipio_R))%>%
-#   group_by(id_municipio_R)%>%
-#   arrange(desc(porcentaje))%>%
-#   # La posicion es el primer indicador 
-#   mutate(posicion = row_number()
-#          )%>%
-#   na.omit()
-#   
-# ayuntamientos2_fake <-   ayuntamientos2_fake%>%  
-#   group_by(id_municipio_R)%>%
-#   arrange(desc(porcentaje))%>%
-#   mutate(diferencia = porcentaje - lag(porcentaje) )%>%
-#   left_join(shp_ayuntamientos, by = "id_municipio_R")%>%
-#   as.data.frame()%>%
-#   select(ID,posicion,porcentaje,diferencia,partido)%>%
-#   arrange(desc(ID))
-# 
-# getwd()
-# write.csv(ayuntamientos2_fake,"/Users/alexa/Library/CloudStorage/OneDrive-NextGateResearch/alexa/2022/10_Plataforma/posiciones.csv", row.names = FALSE
-#             )
-# 
-# names(ayuntamientos2_fake)
-
-
-
-
-
-
 
 
 
@@ -307,5 +272,5 @@ save(a_pan,
         g_pt,
         g_pvem,
      g_panal,
-        g_morena,file = "C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Datos_indices/datos_indices.RData")
+        g_morena,file = "~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Datos_indices/datos_indices.RData")
 
