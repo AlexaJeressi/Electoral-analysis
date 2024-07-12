@@ -3,7 +3,7 @@ library(readr)
 library(sf)
 library(gtools)
 
-dir <- "/Users/alexa/Library/CloudStorage/OneDrive-NextGateResearch/alexa/2022/10_Plataforma/Datos/Estado de Mexico/"
+dir <- "~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/"
 
 #secciones_1 <- st_read(dsn = "C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Distritacion_secciones/15_MEXICO", layer= "Seccion")
 # municipio <- st_read(dsn = "/Users/alexa/Library/CloudStorage/OneDrive-NextGateResearch/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MUNICIPIOS", layer = "MUNICIPIO")
@@ -15,7 +15,7 @@ dir <- "/Users/alexa/Library/CloudStorage/OneDrive-NextGateResearch/alexa/2022/1
 #   select(-geometry,-entidad)
 
 
-secciones <- st_read(dsn = "/Users/alexa/Library/CloudStorage/OneDrive-NextGateResearch/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MEXICO", layer = "SECCION")
+secciones <- st_read(dsn = "~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/15-MEXICO", layer = "SECCION")
 
 secciones_df = as.data.frame(secciones)%>%
   janitor::clean_names()%>%
@@ -160,7 +160,7 @@ ayuntamientos_general = smartbind(ayuntamientos_2021,
 # Los NA significan que ese partido no participo ese por lo que mejor se cambian a cero 
 ayuntamientos_general[is.na(ayuntamientos_general)] = 0
 
-write.csv(ayuntamientos_general, "/Users/alexa/Library/CloudStorage/OneDrive-NextGateResearch/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Bases/ayuntamientos_general.csv", row.names = FALSE)
+write.csv(ayuntamientos_general, "~/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Bases/ayuntamientos_general.csv", row.names = FALSE)
 
 
 
