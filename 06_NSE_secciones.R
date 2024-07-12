@@ -1,7 +1,6 @@
 library(tidyverse)
 
-dir <- 'C:/Users/Alexa/OneDrive - Next Gate Research/'
-setwd("C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/04_analisis_MC/descargas/escala_geoelectoral2020/conjunto_de_datos")
+
 censo <- read_csv("INE_SECCION_2020.csv")
 
 censo = censo%>%
@@ -109,7 +108,7 @@ nulos = seccion_nse%>%
 
 
 ##------------------------- DEMOGRAFICOS -------------------------------------------------
-seccion_nse_15 <- read_csv("C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Tab_dos/nse_seccion.csv")%>%
+seccion_nse_15 <- read_csv("/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Tab_dos/nse_seccion.csv")%>%
   janitor::clean_names()
 
 inegi_secciones <- read_csv(paste0(dir,"alexa/2022/04_analisis_MC/descargas/escala_geoelectoral2020/conjunto_de_datos/INE_SECCION_2020.csv"))%>%
@@ -129,7 +128,7 @@ inegi_secciones = inegi_secciones%>%
 
 
 # Agregar datos de participacion 
-participacion <- read.csv("C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Tab_dos/participacion.csv")%>%
+participacion <- read.csv("/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Tab_dos/participacion.csv")%>%
   janitor::clean_names()
 
 
