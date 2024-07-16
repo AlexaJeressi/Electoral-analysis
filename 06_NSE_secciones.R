@@ -94,7 +94,6 @@ seccion_nse = seccion_nse%>%
 
 
 seccion_nse_15 <- select(seccion_nse,DISTRITO, MUNICIPIO,SECCION,nivel)
-#write.csv(seccion_nse_15, "C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Tab_dos/nse_seccion.csv", row.names = FALSE)
 
 
 nulos = seccion_nse%>%
@@ -119,13 +118,6 @@ inegi_secciones = inegi_secciones%>%
   select(seccion,p_18ymas,p_18ymas_f,p_18ymas_m,graproes,graproes_f,graproes_m,pea,pea_f,pea_m)%>%
   left_join(seccion_nse_15, by= "seccion")
 
-# left_join(seccion_nse_15, by= c("seccion","dtl","entidad"))
-
-#%>%
-#  rename(id_seccion = SECCION,
-#        id_municipio_R = MUNICIPIO,
-#        id_distrito_R = DISTRITO)
-
 
 # Agregar datos de participacion 
 participacion <- read.csv("/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Tab_dos/participacion.csv")%>%
@@ -133,6 +125,4 @@ participacion <- read.csv("/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Tab_
 
 
 datos_final <- full_join(inegi_secciones,participacion, by = "seccion")
-
-#write.csv(datos_final, "C:/Users/Alexa/OneDrive - Next Gate Research/alexa/2022/10_Plataforma/Datos/Estado de Mexico/Tab_dos/agrupados_15.csv", row.names = FALSE)
 
